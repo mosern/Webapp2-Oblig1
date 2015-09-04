@@ -9,45 +9,54 @@ namespace Webapp2_Oblig1.Tests.Controllers
         [TestMethod]
         public void GetBlogsIsCalledWhenListIsOpend()
         {
+            throw new NotImplementedException();
         }
         [TestMethod]
         public void ListReturnPosts()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void GetBlogNameIsCalledWhenBlogIsOpend()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void GetBlogDescriptionIsCalledWhenBlogIsOpend()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void GetPostsIsCalledWhenBlogIsOpend()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void BlogReturnsPosts()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void addPostIsCalledWhenNewPostIsCreated()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void UpdatePostsIsCalledWhenPostIsEdited()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void RemovePostsIsCalledWhenPostIsDeleted()
         {
+            throw new NotImplementedException();
         }
     }
 }
