@@ -16,13 +16,31 @@ namespace Webapp2_Oblig1.Migrations
         protected override void Seed(Webapp2_Oblig1.Models.DbModel context)
         {
             context.Blogs.AddOrUpdate(
-                p => p.BlogsID,
-                new Blogs { BlogsID = 1, Created = DateTime.Now, Description = "Blog from seed", IsOpen = true, LastEdited = DateTime.Now, LastEditor = "seed", Name = "TheSeedBlogg", Owner = "seed"}
+                p => p.Name,
+                new Blogs { Created = DateTime.Now, Description = "Blog from seed", IsOpen = true, LastEdited = DateTime.Now, LastEditor = "seed", Name = "TheSeedBlogg", Owner = "seed"},
+                new Blogs { Created = DateTime.Now, Description = "Blog from seed2", IsOpen = true, LastEdited = DateTime.Now, LastEditor = "seed", Name = "TheSeedBlogg2", Owner = "seed" },
+                new Blogs { Created = DateTime.Now, Description = "Blog from seed3", IsOpen = true, LastEdited = DateTime.Now, LastEditor = "seed", Name = "TheSeedBlogg3", Owner = "seed" }
             );
 
             context.Posts.AddOrUpdate(
-                p => p.BlogsID,
-                new Posts { BlogsID = 1, Content = "Seeded content", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed", PostsID = 1}
+                p => new { p.Header, p.BlogsID },
+                new Posts { BlogsID = 1, Content = "Seeded content", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed" },
+                new Posts { BlogsID = 1, Content = "Seeded content2", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed2" },
+                new Posts { BlogsID = 1, Content = "Seeded content3", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed3" },
+                new Posts { BlogsID = 1, Content = "Seeded content4", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed4" },
+                new Posts { BlogsID = 1, Content = "Seeded content5", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed5" },
+
+                new Posts { BlogsID = 2, Content = "Seeded content", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed" },
+                new Posts { BlogsID = 2, Content = "Seeded content2", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed2" },
+                new Posts { BlogsID = 2, Content = "Seeded content3", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed3" },
+                new Posts { BlogsID = 2, Content = "Seeded content4", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed4" },
+                new Posts { BlogsID = 2, Content = "Seeded content5", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed5" },
+
+                new Posts { BlogsID = 3, Content = "Seeded content", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed" },
+                new Posts { BlogsID = 3, Content = "Seeded content2", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed2" },
+                new Posts { BlogsID = 3, Content = "Seeded content3", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed3" },
+                new Posts { BlogsID = 3, Content = "Seeded content4", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed4" },
+                new Posts { BlogsID = 3, Content = "Seeded content5", Created = DateTime.Now, CreatedBy = "seed", LastEdited = DateTime.Now, Edited = false, Header = "Header from seed5" }
             );
             
         }

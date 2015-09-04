@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Webapp2_Oblig1.Models.Posts>
+
+<div class="container">
+
+    <div class="blog-header">
+        <h1 class="blog-title">@ViewBag.Title</h1>
+        <p class="lead blog-description">@ViewBag.Description</p>
+    </div>
+
+    <h4>
+        @Html.ActionLink("Create New", "Create")
+    </h4>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            @foreach (var item in Model)
+            {
+
+                <div class="blog-post">
+
+                    <p style="float: right">
+                        @Html.ActionLink("Editer", "Edit", "Blogs", new { item.PostsID }) |
+                        @Html.ActionLink("Slett", "Slett", "Blogs", new { item.PostsID })
+                    </p>
+
+                    <h2 class="blog-post-title">@Html.DisplayFor(modelItem => item.Header)</h2>
+
+                    <p class="blog-post-meta">@Html.DisplayFor(modelItem => item.Created) by <a href="#">@Html.DisplayFor(modelItem => item.CreatedBy)</a></p>
+
+                    <p>@Html.DisplayFor(modelItem => item.Content)</p>
+                    
+                </div><!-- /.blog-post -->
+
+            }
+
+        </div><!-- /.blog-main -->
+    </div><!-- /.row -->
+</div><!-- /.container -->

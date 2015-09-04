@@ -50,7 +50,7 @@
             @Html.DisplayFor(modelItem => item.LastEditor)
         </td>
         <td>
-            @Html.ActionLink("Vis", "Show", new { id=item.BlogsID })
+            @Html.ActionLink("Vis", "blog", new { item.BlogsID })
         </td>
     </tr>
 }
