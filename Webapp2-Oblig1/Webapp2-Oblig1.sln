@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapp2-Oblig1", "Webapp2-Oblig1\Webapp2-Oblig1.csproj", "{A4CEEDBE-E2A5-40F6-8D90-70703BF656C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapp2_Oblig1", "Webapp2-Oblig1\Webapp2_Oblig1.csproj", "{A4CEEDBE-E2A5-40F6-8D90-70703BF656C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapp2-Oblig1.Tests", "Webapp2-Oblig1.Tests\Webapp2-Oblig1.Tests.csproj", "{2FD033ED-BA00-4062-A945-77AD9D20BF03}"
 EndProject

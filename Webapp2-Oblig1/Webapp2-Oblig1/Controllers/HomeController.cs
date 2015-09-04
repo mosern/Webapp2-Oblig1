@@ -10,19 +10,22 @@ namespace Webapp2_Oblig1.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Home Page";
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Title = "About";
+            ViewBag.Message = "Bakrund til The Blogg Matrix";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Title = "Contact";
+            ViewBag.Message = "Hvordan kontakte meg - Hint:Bruk epost ;)";
 
             return View();
         }
