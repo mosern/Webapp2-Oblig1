@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapp2_Oblig1", "Webapp2-Oblig1\Webapp2_Oblig1.csproj", "{A4CEEDBE-E2A5-40F6-8D90-70703BF656C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapp2-Oblig1.Tests", "Webapp2-Oblig1.Tests\Webapp2-Oblig1.Tests.csproj", "{2FD033ED-BA00-4062-A945-77AD9D20BF03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapp2_Oblig1.Tests", "Webapp2-Oblig1.Tests\Webapp2_Oblig1.Tests.csproj", "{2FD033ED-BA00-4062-A945-77AD9D20BF03}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{1FF87FCD-4700-40D9-9426-CA901ABFD454}"
 	ProjectSection(SolutionItems) = preProject
