@@ -251,6 +251,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Blogs\List.cshtml" />
     <Content Include="Views\Blogs\Blog.cshtml" />
+    <Content Include="Views\Blogs\DeletePost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

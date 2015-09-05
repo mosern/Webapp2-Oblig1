@@ -26,7 +26,7 @@ namespace Webapp2_Oblig1.Controllers
 
         #region CRUD
         void AddPost(Posts post);
-        void RemovePost(int postID);
+        void RemovePost(Posts post);
         void UpdatePost(int postID);
         #endregion
 

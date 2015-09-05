@@ -8,9 +8,19 @@ namespace Webapp2_Oblig1.Controllers
 {
     public class DbRepository : IRepository
     {
-        public void RemovePost(int postID)
+        private DbModel db = new DbModel();
+
+        public void RemovePost(Posts post)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Posts.Remove(post);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.InnerException.Message);
+            }
         }
 
         public void UpdatePost(int postID)
@@ -60,7 +70,8 @@ namespace Webapp2_Oblig1.Controllers
 
         public Posts GetPost(int PostId)
         {
-            throw new NotImplementedException();
+            var querry = db.Posts.Where(p => p.PostsID == PostId);
+            return querry.ToList()[0];
         }
 
         public void AddPost(Posts post)

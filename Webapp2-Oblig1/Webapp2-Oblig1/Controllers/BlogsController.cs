@@ -11,12 +11,12 @@ namespace Webapp2_Oblig1.Controllers
     {
         IRepository irepository;
 
-        BlogsController()
+        public BlogsController()
         {
             irepository = new DbRepository();
         }
 
-        BlogsController(IRepository irepository)
+        public BlogsController(IRepository irepository)
         {
             this.irepository = irepository;
         }
@@ -50,10 +50,27 @@ namespace Webapp2_Oblig1.Controllers
         {
             throw new NotImplementedException();
         }
-
-        public ActionResult DeletePost(int postID)
+        public ActionResult DeletePost(int? id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ViewBag.isIdNull = false;
+                return View(irepository.GetPost(id.Value) as Posts);
+            }
+            catch(InvalidOperationException)
+            {
+                ViewBag.isIdNull = true;
+                return View();
+            }
+            
+        }
+
+        [HttpPost]
+        public ActionResult DeletePost([Bind(Include="id")]int id)
+        {
+            irepository.RemovePost(irepository.GetPost(id));
+
+            return RedirectToAction("List");
         }
 
     }

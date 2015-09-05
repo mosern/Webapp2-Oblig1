@@ -35,7 +35,7 @@ namespace Webapp2_Oblig1.Tests.Controllers
             ViewResult result = controller.About() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.IsInstanceOfType(result.ViewBag.Message, typeof(String));
         }
 
         [TestMethod]

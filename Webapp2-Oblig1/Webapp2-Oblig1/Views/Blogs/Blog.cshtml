@@ -19,8 +19,8 @@
                 <div class="blog-post">
 
                     <p style="float: right">
-                        @Html.ActionLink("Editer", "Edit", "Blogs", new { item.PostsID }) |
-                        @Html.ActionLink("Slett", "Slett", "Blogs", new { item.PostsID })
+                        @Html.ActionLink("Editer", "Edit", new { id = item.PostsID }) |
+                        @Html.ActionLink("Slett", "DeletePost",  new { id = item.PostsID })
                     </p>
 
                     <h2 class="blog-post-title">@Html.DisplayFor(modelItem => item.Header)</h2>
