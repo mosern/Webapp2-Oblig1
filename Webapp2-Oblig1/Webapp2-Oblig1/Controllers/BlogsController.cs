@@ -26,30 +26,72 @@ namespace Webapp2_Oblig1.Controllers
         {
             ViewBag.Title = "Blogger";
 
-            return View(db.Blogs);
+            return View(irepository.GetAllBlogs());
         }
 
         [HttpGet]
         public ActionResult Blog(int BlogsID)
         {
-            var BlogName = db.Blogs.Where(b => b.BlogsID == BlogsID).Select(b => b.Name);
-            var BlogDesc = db.Blogs.Where(b => b.BlogsID == BlogsID).Select(b => b.Description);
+            ViewBag.BlogId = BlogsID;
+            ViewBag.Title = irepository.GetBlogName(BlogsID);
+            ViewBag.Description = irepository.GetBlogDescription(BlogsID);
 
-            ViewBag.Title = BlogName.ToList<String>()[0];
-            ViewBag.Description = BlogDesc.ToList<String>()[0];
-            var Posts = db.Posts.Where(p => p.BlogsID == BlogsID);
+            var Posts = irepository.GetAllPosts(irepository.GetBlog(BlogsID), 5);
             return View(Posts);
         }
-
-        public ActionResult NewPost(Posts post)
+        
+        public ActionResult NewPost(int? id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ViewBag.isIdNull = false;
+                return View(new Posts {BlogsID = id.Value });
+            }
+            catch
+            {
+                ViewBag.isIdNull = true;
+                return View();
+            }
+            
         }
 
-        public ActionResult EditPost(int postID)
+        [HttpPost]
+        public ActionResult NewPost([Bind(Include = "BlogsId, Header, Content, Created, CreatedBy")]Posts newPosts, int id)
         {
-            throw new NotImplementedException();
+            newPosts.BlogsID = id;
+            newPosts.CreatedBy = "Bruker";
+            newPosts.Created = DateTime.Now;
+            newPosts.LastEdited = DateTime.Now;
+            irepository.AddPost(newPosts);
+
+            return RedirectToAction("List");
+
         }
+
+        public ActionResult EditPost(int? id)
+        {
+            try
+            {
+                ViewBag.isIdNull = false;
+                return View();
+            }
+            catch
+            {
+                ViewBag.isIdNull = true;
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditPost([Bind(Include = "Header, Content,Created, CreatedBy")]Posts post, int id)
+        {
+            post.LastEdited = DateTime.Now;
+            post.EditedBy = "BrukerE";
+            irepository.UpdatePost(id, post);
+
+            return RedirectToAction("List");
+        }
+
         public ActionResult DeletePost(int? id)
         {
             try
@@ -71,6 +113,11 @@ namespace Webapp2_Oblig1.Controllers
             irepository.RemovePost(irepository.GetPost(id));
 
             return RedirectToAction("List");
+        }
+
+        public ActionResult Test()
+        {
+            return View(irepository.GetBlog(2));
         }
 
     }

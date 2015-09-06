@@ -58,38 +58,35 @@ namespace Webapp2_Oblig1.Tests.Controllers
 
             irepository = new Mock<IRepository>();
 
-            /*
             irepository.Setup(x => x.GetAllBlogs()).Returns(blogs);
             irepository.Setup(x => x.GetBlogName(It.IsAny<int>())).Returns(blogs[id].Name);
             irepository.Setup(x => x.GetBlogDescription(It.IsAny<int>())).Returns(blogs[id].Description);
             irepository.Setup(x => x.GetAllPosts(It.IsAny<Blogs>())).Returns(posts1);
             irepository.Setup(x => x.RemovePost(It.IsAny<Posts>()));
+            irepository.Setup(x => x.UpdatePost(It.IsAny<int>(), It.IsAny<Posts>()));
+            irepository.Setup(x => x.AddPost(It.IsAny<Posts>()));
 
-
-
-            controller = new BlogsController(irepository.Object);*/
+            controller = new BlogsController(irepository.Object);
         }
         [TestMethod]
         public void GetAllBlogsIsCalledWhenListIsOpend()
         {
-            var result = (ViewResult)controller.List();
+            controller.List();
             irepository.Verify(r => r.GetAllBlogs(), Times.Once);
         }
 
         [TestMethod]
         public void ListReturnBlogs()
         {
-            var result = (ViewResult)controller.List();
-            var blogs = result.ViewData.Model as List<Blogs>;
+            controller.List();
 
-            Assert.AreEqual(3, blogs.Count);
-            CollectionAssert.AllItemsAreInstancesOfType((ICollection)result.ViewData.Model, typeof(Blogs));
+            CollectionAssert.AllItemsAreInstancesOfType((ICollection)controller.ModelState.Values, typeof(Blogs));
         }
 
         [TestMethod]
         public void GetBlogNameIsCalledWhenBlogIsOpend()
         {
-            var result = (ViewResult)controller.Blog(It.IsAny<int>());
+            controller.Blog(It.IsAny<int>());
 
             irepository.Verify(r => r.GetBlogName(It.IsAny<int>()), Times.Once);
         }
@@ -97,7 +94,7 @@ namespace Webapp2_Oblig1.Tests.Controllers
         [TestMethod]
         public void GetBlogDescriptionIsCalledWhenBlogIsOpend()
         {
-            var result = (ViewResult)controller.Blog(It.IsAny<int>());
+            controller.Blog(It.IsAny<int>());
 
             irepository.Verify(r => r.GetBlogDescription(It.IsAny<int>()), Times.Once);
         }
@@ -105,25 +102,23 @@ namespace Webapp2_Oblig1.Tests.Controllers
         [TestMethod]
         public void GetAllPostsIsCalledWhenBlogIsOpend()
         {
-            var result = (ViewResult)controller.Blog(It.IsAny<int>());
+            controller.Blog(It.IsAny<int>());
 
-            irepository.Verify(r => r.GetAllPosts(It.IsAny<Blogs>()), Times.Once);
+            irepository.Verify(r => r.GetAllPosts(It.IsAny<Blogs>(), It.IsAny<int>()), Times.Once);
         }
 
         [TestMethod]
         public void BlogReturnsPosts()
         {
-            var result = (ViewResult)controller.Blog(It.IsAny<int>());
-            var blogs = result.ViewData.Model as List<Posts>;
+            controller.Blog(It.IsAny<int>());
 
-            Assert.AreEqual(5, posts1.Count);
-            CollectionAssert.AllItemsAreInstancesOfType((ICollection)result.ViewData.Model, typeof(Posts));
+            CollectionAssert.AllItemsAreInstancesOfType((ICollection)controller.ModelState.Values, typeof(Posts));
         }
 
         [TestMethod]
         public void addPostIsCalledWhenNewPostIsCreated()
         {
-            var result = (ViewResult)controller.Blog(It.IsAny<int>());
+            controller.NewPost(It.IsAny<Posts>(), It.IsAny<int>());
 
             irepository.Verify(r => r.AddPost(It.IsAny<Posts>()), Times.Once);
         }
@@ -131,19 +126,15 @@ namespace Webapp2_Oblig1.Tests.Controllers
         [TestMethod]
         public void UpdatePostsIsCalledWhenPostIsEdited()
         {
-            var result = (ViewResult)controller.Blog(It.IsAny<int>());
+            controller.EditPost(It.IsAny<Posts>(), It.IsAny<int>());
 
-            irepository.Verify(r => r.UpdatePost(It.IsAny<int>()), Times.Once);
+            irepository.Verify(r => r.UpdatePost(It.IsAny<int>(), It.IsAny<Posts>()), Times.Once);
         }
 
         [TestMethod]
         public void RemovePostsIsCalledWhenPostIsDeleted()
         {
-            irepository.Setup(x => x.RemovePost(It.IsAny<Posts>())).Verifiable();
-
-            BlogsController bcon = new BlogsController(irepository.Object);
-
-            bcon.DeletePost(It.IsAny<int>());
+            controller.DeletePost(It.IsAny<int>());
 
             irepository.Verify(r => r.RemovePost(It.IsAny<Posts>()), Times.Once);
         }

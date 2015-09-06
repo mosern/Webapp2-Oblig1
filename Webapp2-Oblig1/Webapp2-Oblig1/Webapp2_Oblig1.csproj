@@ -252,6 +252,9 @@
     <Content Include="Views\Blogs\List.cshtml" />
     <Content Include="Views\Blogs\Blog.cshtml" />
     <Content Include="Views\Blogs\DeletePost.cshtml" />
+    <Content Include="Views\Blogs\Test.cshtml" />
+    <Content Include="Views\Blogs\NewPost.cshtml" />
+    <Content Include="Views\Blogs\EditPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

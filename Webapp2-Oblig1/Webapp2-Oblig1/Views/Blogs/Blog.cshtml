@@ -8,7 +8,7 @@
     </div>
 
     <h4>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "NewPost", new { id = ViewBag.BlogId })
     </h4>
 
     <div class="row">
@@ -19,7 +19,7 @@
                 <div class="blog-post">
 
                     <p style="float: right">
-                        @Html.ActionLink("Editer", "Edit", new { id = item.PostsID }) |
+                        @Html.ActionLink("Editer", "EditPost", new { id = item.PostsID }) |
                         @Html.ActionLink("Slett", "DeletePost",  new { id = item.PostsID })
                     </p>
 
