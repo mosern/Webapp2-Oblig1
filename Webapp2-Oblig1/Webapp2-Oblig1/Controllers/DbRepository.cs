@@ -27,7 +27,7 @@ namespace Webapp2_Oblig1.Controllers
         {
             try
             {
-                Posts orgin = this.GetPost(postID);
+                Posts orgin = db.Posts.Where(p => p.PostsID == postID).Single();
                 orgin.Header = post.Header;
                 orgin.Content = post.Content;
                 orgin.LastEdited = post.Created;

@@ -118,7 +118,7 @@ namespace Webapp2_Oblig1.Tests.Controllers
         [TestMethod]
         public void addPostIsCalledWhenNewPostIsCreated()
         {
-            controller.NewPost(It.IsAny<Posts>(), It.IsAny<int>());
+            controller.NewPost(new Posts(), It.IsAny<int>());
 
             irepository.Verify(r => r.AddPost(It.IsAny<Posts>()), Times.Once);
         }
@@ -126,7 +126,7 @@ namespace Webapp2_Oblig1.Tests.Controllers
         [TestMethod]
         public void UpdatePostsIsCalledWhenPostIsEdited()
         {
-            controller.EditPost(It.IsAny<Posts>(), It.IsAny<int>());
+            controller.EditPost(new Posts(), It.IsAny<int>());
 
             irepository.Verify(r => r.UpdatePost(It.IsAny<int>(), It.IsAny<Posts>()), Times.Once);
         }

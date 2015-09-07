@@ -73,7 +73,7 @@ namespace Webapp2_Oblig1.Controllers
             try
             {
                 ViewBag.isIdNull = false;
-                return View();
+                return View(irepository.GetPost(id.Value));
             }
             catch
             {
