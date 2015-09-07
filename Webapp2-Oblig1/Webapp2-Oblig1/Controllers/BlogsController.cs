@@ -85,9 +85,10 @@ namespace Webapp2_Oblig1.Controllers
         [HttpPost]
         public ActionResult EditPost([Bind(Include = "Header, Content,Created, CreatedBy")]Posts post, int id)
         {
+            post.PostsID = id;
             post.LastEdited = DateTime.Now;
             post.EditedBy = "BrukerE";
-            irepository.UpdatePost(id, post);
+            irepository.UpdatePost(post);
 
             return RedirectToAction("List");
         }

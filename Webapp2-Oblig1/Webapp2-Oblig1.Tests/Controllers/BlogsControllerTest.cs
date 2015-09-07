@@ -63,7 +63,7 @@ namespace Webapp2_Oblig1.Tests.Controllers
             irepository.Setup(x => x.GetBlogDescription(It.IsAny<int>())).Returns(blogs[id].Description);
             irepository.Setup(x => x.GetAllPosts(It.IsAny<Blogs>())).Returns(posts1);
             irepository.Setup(x => x.RemovePost(It.IsAny<Posts>()));
-            irepository.Setup(x => x.UpdatePost(It.IsAny<int>(), It.IsAny<Posts>()));
+            irepository.Setup(x => x.UpdatePost(It.IsAny<Posts>()));
             irepository.Setup(x => x.AddPost(It.IsAny<Posts>()));
 
             controller = new BlogsController(irepository.Object);
@@ -128,7 +128,7 @@ namespace Webapp2_Oblig1.Tests.Controllers
         {
             controller.EditPost(new Posts(), It.IsAny<int>());
 
-            irepository.Verify(r => r.UpdatePost(It.IsAny<int>(), It.IsAny<Posts>()), Times.Once);
+            irepository.Verify(r => r.UpdatePost(It.IsAny<Posts>()), Times.Once);
         }
 
         [TestMethod]

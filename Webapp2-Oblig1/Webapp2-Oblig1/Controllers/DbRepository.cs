@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Webapp2_Oblig1.Models;
@@ -23,16 +24,18 @@ namespace Webapp2_Oblig1.Controllers
             }
         }
 
-        public void UpdatePost(int postID, Posts post)
+        public void UpdatePost(Posts post)
         {
             try
             {
-                Posts orgin = db.Posts.Where(p => p.PostsID == postID).Single();
+                Posts orgin = db.Posts.Where(p => p.PostsID == post.PostsID).Single();
                 orgin.Header = post.Header;
                 orgin.Content = post.Content;
-                orgin.LastEdited = post.Created;
-                orgin.EditedBy = post.CreatedBy;
+                orgin.LastEdited = post.LastEdited;
+                orgin.EditedBy = post.EditedBy;
                 orgin.Edited = true;
+
+                db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
             }
             catch (Exception e)
